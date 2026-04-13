@@ -8,7 +8,7 @@ export const siteConfig = {
   github: "https://github.com/TarunTechHub",
   whatsapp:
     "https://wa.me/917019448032?text=Hi%20Tarun%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project%2Fopportunity.",
-  resumeUrl: "/assets/resume/Tarun_Resume.pdf",
+  resumeUrl: "/MyBioData/assets/resume/Tarun_Resume.pdf",
   tagline: "I engineer systems that scale and ship products that convert.",
   summary:
     "Full Stack Developer with 3+ years of experience building production systems and modern web applications. I work across backend architecture, APIs, frontend applications, dashboards, search systems, async processing, and AI-powered features — focused on building reliable, scalable solutions that create real business impact.",
