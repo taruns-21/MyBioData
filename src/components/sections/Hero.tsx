@@ -70,7 +70,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 sm:px-6"
     >
       {/* Grid background */}
       <div className="grid-bg grid-mask pointer-events-none absolute inset-0" />
@@ -107,15 +107,15 @@ export default function Hero() {
         {/* Name */}
         <motion.h1
           variants={item}
-          className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-8xl"
+          className="text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-8xl"
         >
           {siteConfig.name}
           <span className="gradient-text">.</span>
         </motion.h1>
 
         {/* Typing animation */}
-        <motion.div variants={item} className="mt-4 h-10 sm:mt-6">
-          <span className="text-xl font-medium text-[var(--muted-foreground)] sm:text-2xl lg:text-3xl">
+        <motion.div variants={item} className="mt-3 h-8 sm:mt-6 sm:h-10">
+          <span className="text-lg font-medium text-[var(--muted-foreground)] sm:text-xl lg:text-3xl">
             {text}
             <span className="animate-pulse text-[var(--accent)]">|</span>
           </span>
@@ -132,11 +132,11 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={item}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4"
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[var(--accent-dark)] hover:shadow-lg hover:shadow-[var(--accent)]/25"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[var(--accent-dark)] hover:shadow-lg hover:shadow-[var(--accent)]/25 sm:w-auto sm:px-7 sm:py-3.5"
           >
             View Projects
             <ArrowDown
@@ -148,7 +148,7 @@ export default function Hero() {
             href={siteConfig.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-7 py-3.5 text-sm font-medium transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium transition-all hover:border-[var(--accent)] hover:text-[var(--accent)] sm:w-auto sm:px-7 sm:py-3.5"
           >
             <Download size={16} />
             Download Resume
@@ -157,7 +157,7 @@ export default function Hero() {
             href={siteConfig.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-7 py-3.5 text-sm font-medium text-green-500 transition-all hover:bg-green-500/20 hover:shadow-lg hover:shadow-green-500/10"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-6 py-3 text-sm font-medium text-green-500 transition-all hover:bg-green-500/20 hover:shadow-lg hover:shadow-green-500/10 sm:w-auto sm:px-7 sm:py-3.5"
           >
             <MessageCircle size={16} />
             WhatsApp Me
@@ -199,7 +199,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

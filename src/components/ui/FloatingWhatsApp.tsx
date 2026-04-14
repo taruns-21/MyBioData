@@ -23,7 +23,7 @@ export default function FloatingWhatsApp() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3">
+    <div className="fixed bottom-4 right-3 z-50 flex items-end gap-2 sm:bottom-6 sm:right-6 sm:gap-3">
       {/* Tooltip */}
       <AnimatePresence>
         {!tooltipDismissed && (
@@ -31,7 +31,7 @@ export default function FloatingWhatsApp() {
             initial={{ opacity: 0, x: 20, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.9 }}
-            className="glass mb-2 flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm shadow-lg"
+            className="glass mb-2 hidden items-center gap-2 rounded-xl px-4 py-2.5 text-sm shadow-lg sm:flex"
           >
             <span className="text-[var(--muted-foreground)]">
               Have a project in mind?

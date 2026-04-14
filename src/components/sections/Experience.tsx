@@ -57,7 +57,7 @@ export default function Experience() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.15, duration: 0.6 }}
-                  className="relative pl-16 sm:pl-20"
+                  className="relative pl-14 sm:pl-20"
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-3 top-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-[var(--accent)]/40 bg-[var(--background)] sm:left-3.5">
@@ -74,7 +74,7 @@ export default function Experience() {
                     )}
                   </div>
 
-                  <div className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all hover:border-[var(--accent)]/30 hover:shadow-xl hover:shadow-[var(--accent)]/5">
+                  <div className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition-all hover:border-[var(--accent)]/30 hover:shadow-xl hover:shadow-[var(--accent)]/5 sm:p-6">
                     {/* Header */}
                     <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
                       <div>

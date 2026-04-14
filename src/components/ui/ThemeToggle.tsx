@@ -25,7 +25,7 @@ export default function ThemeToggle() {
   return (
     <motion.button
       onClick={toggle}
-      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--muted)] transition-colors hover:border-[var(--accent)]"
+      className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--muted)] transition-colors hover:border-[var(--accent)]"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"

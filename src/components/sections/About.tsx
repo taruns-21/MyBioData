@@ -34,10 +34,10 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-20 max-w-3xl"
         >
-          <p className="text-center text-lg leading-relaxed text-[var(--muted-foreground)]">
+          <p className="text-center text-base leading-relaxed text-[var(--muted-foreground)] sm:text-lg">
             {siteConfig.summary}
           </p>
-          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-[var(--muted-foreground)]">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-[var(--muted-foreground)] sm:gap-6">
             <span className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
               Available for freelance
@@ -50,7 +50,7 @@ export default function About() {
         </motion.div>
 
         {/* Animated stats */}
-        <div className="mb-20 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mb-14 grid grid-cols-2 gap-3 sm:mb-20 sm:gap-4 md:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -58,9 +58,9 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 text-center transition-all hover:border-[var(--accent)]/30 hover:shadow-lg hover:shadow-[var(--accent)]/5"
+              className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 text-center transition-all hover:border-[var(--accent)]/30 hover:shadow-lg hover:shadow-[var(--accent)]/5 sm:p-6"
             >
-              <div className="text-3xl font-bold gradient-text sm:text-4xl">
+              <div className="text-2xl font-bold gradient-text sm:text-3xl lg:text-4xl">
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -84,7 +84,7 @@ export default function About() {
             What I Build
           </motion.h3>
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
             {services.map((service, i) => {
               const Icon = serviceIcons[i];
               return (
@@ -94,7 +94,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition-all hover:border-[var(--accent)]/20 hover:shadow-xl hover:shadow-[var(--accent)]/5"
+                  className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition-all hover:border-[var(--accent)]/20 hover:shadow-xl hover:shadow-[var(--accent)]/5 sm:p-6"
                 >
                   <div
                     className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${service.gradient} transition-transform group-hover:scale-110`}

@@ -18,6 +18,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     const sections = navLinks.map((l) => l.href.slice(1));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -117,7 +122,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="glass fixed inset-x-0 top-16 z-40 border-b border-[var(--border)] p-4 md:hidden"
+            className="glass fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-[var(--border)] p-4 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (

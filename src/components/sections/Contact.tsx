@@ -118,7 +118,7 @@ export default function Contact() {
             href={siteConfig.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-2xl border border-green-500/20 bg-green-500/10 px-8 py-4 text-base font-medium text-green-500 transition-all hover:bg-green-500/15 hover:shadow-lg hover:shadow-green-500/10"
+            className="group inline-flex items-center gap-2 rounded-2xl border border-green-500/20 bg-green-500/10 px-5 py-3 text-sm font-medium text-green-500 transition-all hover:bg-green-500/15 hover:shadow-lg hover:shadow-green-500/10 sm:gap-3 sm:px-8 sm:py-4 sm:text-base"
           >
             <MessageCircle size={22} />
             Message me on WhatsApp
@@ -209,7 +209,7 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
+              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6"
             >
               <h3 className="mb-5 text-lg font-semibold">Send a message</h3>
               <div className="space-y-4">
@@ -229,7 +229,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setForm((f) => ({ ...f, name: e.target.value }))
                       }
-                      className="w-full rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-sm outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20"
+                      className="w-full rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-base outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 sm:text-sm"
                       placeholder="Your name"
                     />
                   </div>
@@ -248,7 +248,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setForm((f) => ({ ...f, email: e.target.value }))
                       }
-                      className="w-full rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-sm outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20"
+                      className="w-full rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-base outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 sm:text-sm"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -269,7 +269,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setForm((f) => ({ ...f, message: e.target.value }))
                     }
-                    className="w-full resize-none rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-sm outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20"
+                    className="w-full resize-none rounded-xl border border-[var(--border)] bg-[var(--muted)] px-4 py-3 text-base outline-none transition-all focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 sm:text-sm"
                     placeholder="Tell me about your project or opportunity..."
                   />
                 </div>

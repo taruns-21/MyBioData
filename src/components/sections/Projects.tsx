@@ -31,11 +31,11 @@ export default function Projects() {
               <div className="h-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] transition-all hover:border-[var(--accent)]/30 hover:shadow-2xl hover:shadow-[var(--accent)]/5">
                 {/* Gradient visual placeholder */}
                 <div
-                  className={`relative h-48 overflow-hidden bg-gradient-to-br ${project.gradient} sm:h-56`}
+                  className={`relative h-40 overflow-hidden bg-gradient-to-br ${project.gradient} sm:h-56`}
                 >
                   <div className="absolute inset-0 bg-black/20" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-3xl font-bold tracking-tight text-white/90 sm:text-4xl">
+                    <span className="text-2xl font-bold tracking-tight text-white/90 sm:text-4xl">
                       {project.title}
                     </span>
                   </div>
@@ -63,7 +63,7 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="mb-3 flex items-start justify-between">
                     <h3 className="text-xl font-bold transition-colors group-hover:text-[var(--accent)]">
                       {project.title}

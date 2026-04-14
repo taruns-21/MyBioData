@@ -14,9 +14,9 @@ export default function SectionHeading({ title, subtitle }: SectionHeadingProps)
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
-      className="mb-16 text-center"
+      className="mb-10 text-center sm:mb-16"
     >
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
         {title}
         <span className="gradient-text">.</span>
       </h2>

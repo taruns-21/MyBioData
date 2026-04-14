@@ -38,6 +38,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,8 @@ body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 ::selection {
@@ -145,7 +148,13 @@ body {
       transparent 1px
     ),
     linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-size: 40px 40px;
+}
+
+@media (min-width: 640px) {
+  .grid-bg {
+    background-size: 60px 60px;
+  }
 }
 
 .dark .grid-bg {
@@ -159,15 +168,30 @@ body {
 /* ── Hero radial fade on grid ── */
 .grid-mask {
   mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 50%,
+    ellipse 90% 50% at 50% 50%,
     black 30%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 50%,
+    ellipse 90% 50% at 50% 50%,
     black 30%,
     transparent 100%
   );
+}
+
+@media (min-width: 640px) {
+  .grid-mask {
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      black 30%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      black 30%,
+      transparent 100%
+    );
+  }
 }
 
 /* ── Cursor spotlight ── */

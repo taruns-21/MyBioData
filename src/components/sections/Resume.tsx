@@ -27,7 +27,7 @@ export default function Resume() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-3"
           >
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
               <h3 className="mb-5 text-lg font-semibold">Key Highlights</h3>
               <ul className="space-y-3">
                 {resumeHighlights.map((highlight, i) => (
@@ -59,7 +59,7 @@ export default function Resume() {
             className="space-y-6 lg:col-span-2"
           >
             {/* Education card */}
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 sm:p-6">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)]">
                 <GraduationCap size={20} />
               </div>
@@ -74,7 +74,7 @@ export default function Resume() {
             </div>
 
             {/* Download card */}
-            <div className="gradient-border rounded-2xl bg-[var(--card)] p-6 text-center">
+            <div className="gradient-border rounded-2xl bg-[var(--card)] p-4 text-center sm:p-6">
               <h3 className="mb-2 text-lg font-semibold">
                 Get the full picture
               </h3>
