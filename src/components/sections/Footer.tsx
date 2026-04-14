@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, ArrowUpCircle } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 
 export default function Footer() {
@@ -12,51 +12,56 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-[var(--border)]">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-          {/* Brand */}
-          <div>
-            <a
-              href="#home"
-              className="text-lg font-bold tracking-tight transition-colors hover:text-[var(--accent)]"
-            >
-              {siteConfig.name}
-              <span className="text-[var(--accent)]">.</span>
+    <footer className="border-t border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] w-full">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-10 sm:py-16">
+        <div className="grid gap-8 md:grid-cols-[2fr_1fr] lg:grid-cols-[3fr_1fr_1fr]">
+          <div className="max-w-md">
+            <a href="#home" className="inline-flex items-center gap-3 text-lg font-bold tracking-tight mb-4">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--foreground)] text-sm font-black text-[var(--background)]">
+                {siteConfig.name.charAt(0)}
+              </div>
+              <span className="text-[var(--foreground)]">{siteConfig.name}</span>
             </a>
-            <p className="mt-1 max-w-xs text-sm text-[var(--muted-foreground)]">
-              Building modern web solutions and scalable business applications.
+            <p className="text-sm leading-relaxed text-[var(--muted-foreground)] pr-4 sm:pr-0">
+              {siteConfig.tagline}
             </p>
           </div>
 
-          {/* Social links */}
-          <div className="flex items-center gap-4">
-            {socials.map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted-foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                aria-label={label}
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+          <div className="flex flex-col gap-2">
+             <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--muted-foreground)] mb-1 cursor-default">Platform</h4>
+             {socials.map(({ icon: Icon, href, label }) => (
+               <a
+                 key={label}
+                 href={href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="inline-flex items-center gap-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)] w-full py-1 sm:py-0"
+                 aria-label={label}
+               >
+                 <Icon size={16} className="text-[var(--muted-foreground)]" />
+                 {label}
+               </a>
+             ))}
+          </div>
+
+          <div className="flex flex-col gap-3 items-start md:items-end mt-2 md:mt-0">
+             <a
+               href="#home"
+               className="inline-flex items-center gap-2 text-sm font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)] py-2 sm:py-0"
+               aria-label="Back to top"
+             >
+               Back to top
+               <ArrowUpCircle size={18} className="text-[var(--muted-foreground)]" />
+             </a>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="section-divider mt-8" />
-
-        {/* Bottom row */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
-          <p className="text-xs text-[var(--muted-foreground)]">
-            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-            reserved.
+        <div className="mt-8 sm:mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-[var(--border)] pt-6 text-[13px] text-[var(--muted-foreground)] font-medium">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--muted-foreground)]">
-            Engineered with precision. Built with Next.js.
+          <p>
+            Built with Next.js & Tailwind
           </p>
         </div>
       </div>

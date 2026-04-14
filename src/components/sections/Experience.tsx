@@ -1,131 +1,79 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, MapPin, Building2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { experience } from "@/lib/data";
+import { workExperience } from "@/lib/data";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-[var(--accent)]/5 blur-[100px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-4xl px-6">
+    <section id="experience" className="pt-2 pb-8 sm:pt-4 sm:pb-12 bg-[var(--background)]">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <SectionHeading
           title="Experience"
-          subtitle="My journey building production systems at scale"
+          subtitle="My professional background and career progression."
         />
 
-        {/* Company header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 flex flex-col items-center gap-3 text-center"
-        >
-          <div className="inline-flex items-center gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)]">
-              <Building2 size={20} />
-            </div>
-            <div className="text-left">
-              <h3 className="text-lg font-bold">WebMD</h3>
-              <div className="flex items-center gap-2 text-xs text-[var(--muted-foreground)]">
-                <MapPin size={12} />
-                Mumbai, Maharashtra, India
-                <span className="mx-1">&middot;</span>
-                Full-time
+        <div className="mt-8 space-y-12">
+          {workExperience.map((job, idx) => (
+            <motion.div
+              key={job.company}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="relative md:grid md:grid-cols-[1fr_2.5fr] gap-6 lg:gap-12"
+            >
+              {/* Left Column: Company Details */}
+              <div className="mb-4 md:mb-0">
+                <h3 className="text-xl sm:text-2xl font-bold text-[var(--foreground)] tracking-tight">
+                  {job.company}
+                </h3>
+                <p className="mt-1 flex items-center text-sm font-medium text-[var(--muted-foreground)]">
+                  {job.location}
+                </p>
               </div>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[23px] top-0 h-full w-px bg-gradient-to-b from-[var(--accent)] via-[var(--accent)]/40 to-transparent sm:left-[27px]" />
+              {/* Right Column: Roles Timeline */}
+              <div className="relative">
+                {/* Vertical progression line */}
+                <div className="absolute left-[7px] top-2 bottom-4 w-px bg-[var(--border)]" />
 
-          <div className="space-y-10">
-            {experience.map((exp, idx) => {
-              const isCurrent = idx === 0;
+                <div className="space-y-8">
+                  {job.roles.map((role, roleIdx) => (
+                    <div key={roleIdx} className="relative pl-6 sm:pl-8">
+                      {/* Timeline dot */}
+                      <div className="absolute left-0 top-2 h-4 w-4 rounded-full border-4 border-[var(--background)] bg-[var(--accent)]" />
 
-              return (
-                <motion.div
-                  key={exp.role}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15, duration: 0.6 }}
-                  className="relative pl-14 sm:pl-20"
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-3 top-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-[var(--accent)]/40 bg-[var(--background)] sm:left-3.5">
-                    {isCurrent ? (
-                      <span className="relative flex h-3 w-3">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-75" />
-                        <span className="relative inline-flex h-3 w-3 rounded-full bg-[var(--accent)]" />
-                      </span>
-                    ) : (
-                      <Briefcase
-                        size={16}
-                        className="text-[var(--muted-foreground)]"
-                      />
-                    )}
-                  </div>
-
-                  <div className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition-all hover:border-[var(--accent)]/30 hover:shadow-xl hover:shadow-[var(--accent)]/5 sm:p-6">
-                    {/* Header */}
-                    <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-lg font-bold">{exp.role}</h3>
-                          {isCurrent && (
-                            <span className="rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-500">
-                              Current
-                            </span>
-                          )}
-                        </div>
-                        <p className="mt-0.5 text-sm text-[var(--muted-foreground)]">
-                          {exp.period}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mb-4 text-sm leading-relaxed text-[var(--muted-foreground)]">
-                      {exp.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <ul className="mb-5 space-y-2">
-                      {exp.highlights.map((highlight) => (
-                        <li
-                          key={highlight}
-                          className="flex gap-3 text-sm text-[var(--muted-foreground)]"
-                        >
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--accent)]" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Tech tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]"
-                        >
-                          {tech}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                        <h4 className="text-base sm:text-lg font-bold text-[var(--foreground)] leading-snug">
+                          {role.title}
+                        </h4>
+                        <span className="text-xs font-mono font-medium tracking-wide text-[var(--muted-foreground)]">
+                          {role.period}
                         </span>
-                      ))}
+                      </div>
+
+                      <p className="text-sm text-[var(--foreground)] mb-2.5 font-medium leading-relaxed">
+                        {role.summary}
+                      </p>
+
+                      <ul className="space-y-1.5">
+                        {role.points.map((point, pointIdx) => (
+                          <li
+                            key={pointIdx}
+                            className="text-sm leading-relaxed text-[var(--muted-foreground)] flex items-start gap-2.5"
+                          >
+                            <span className="mt-[6px] block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--border)]" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

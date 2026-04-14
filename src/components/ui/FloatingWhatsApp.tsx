@@ -7,59 +7,94 @@ import { siteConfig } from "@/lib/data";
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
-  const [tooltipDismissed, setTooltipDismissed] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
+  const [isManuallyClosed, setIsManuallyClosed] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+    const initialTimer = setTimeout(() => {
+      setVisible(true);
+      if (!isManuallyClosed) {
+        setShowBubble(true);
+      }
+    }, 3000);
+    
+    let scrollTimeout: NodeJS.Timeout;
+    let hideTimeout: NodeJS.Timeout;
 
-  useEffect(() => {
-    if (!visible || tooltipDismissed) return;
-    const timer = setTimeout(() => setTooltipDismissed(true), 8000);
-    return () => clearTimeout(timer);
-  }, [visible, tooltipDismissed]);
+    const handleScroll = () => {
+      if (isManuallyClosed) return;
+      
+      // Hide instantly while scrolling
+      setShowBubble(false);
+      
+      clearTimeout(scrollTimeout);
+      clearTimeout(hideTimeout);
+
+      // Detect when scrolling stops
+      scrollTimeout = setTimeout(() => {
+        setShowBubble(true);
+        
+        // Hide again after 4 seconds
+        hideTimeout = setTimeout(() => {
+          setShowBubble(false);
+        }, 4000);
+      }, 500);
+    };
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      clearTimeout(initialTimer);
+      clearTimeout(scrollTimeout);
+      clearTimeout(hideTimeout);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isManuallyClosed]);
+
+  const handleClose = () => {
+    setIsManuallyClosed(true);
+    setShowBubble(false);
+  };
 
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 right-3 z-50 flex items-end gap-2 sm:bottom-6 sm:right-6 sm:gap-3">
-      {/* Tooltip */}
+    <div className="fixed bottom-5 right-5 z-50 flex items-end gap-3 sm:bottom-6 sm:right-6">
+      {/* Speech Bubble Popup */}
       <AnimatePresence>
-        {!tooltipDismissed && (
+        {showBubble && (
           <motion.div
-            initial={{ opacity: 0, x: 20, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 20, scale: 0.9 }}
-            className="glass mb-2 hidden items-center gap-2 rounded-xl px-4 py-2.5 text-sm shadow-lg sm:flex"
+            initial={{ opacity: 0, scale: 0.8, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 0.8, x: 20, transition: { duration: 0.2 } }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+            className="relative flex max-w-[180px] sm:max-w-[220px] flex-col rounded-2xl rounded-br-sm border border-[var(--border)] bg-[var(--card)] p-3 sm:p-3.5 text-[12px] sm:text-[13px] leading-relaxed text-[var(--foreground)] shadow-xl"
           >
-            <span className="text-[var(--muted-foreground)]">
-              Have a project in mind?
-            </span>
-            <button
-              onClick={() => setTooltipDismissed(true)}
-              className="text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
-              aria-label="Dismiss"
+            <button 
+              onClick={handleClose}
+              className="absolute right-2 top-2 p-1 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors rounded-full bg-[var(--muted)]/50"
+              aria-label="Close tooltip"
             >
-              <X size={14} />
+              <X size={12} strokeWidth={3} />
             </button>
+            <span className="font-bold text-sm mb-1 pr-6">Let's connect! 💬</span>
+            <span className="text-[var(--muted-foreground)] leading-tight">
+              Want to discuss a custom project or a full-time (FTE) opportunity?
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* WhatsApp button */}
+      {/* Main WhatsApp Button */}
       <motion.a
         href={siteConfig.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-shadow hover:shadow-xl hover:shadow-[#25D366]/40"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-transform hover:scale-110 active:scale-95"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle size={24} />
+        <MessageCircle fill="currentColor" stroke="none" size={24} />
       </motion.a>
     </div>
   );

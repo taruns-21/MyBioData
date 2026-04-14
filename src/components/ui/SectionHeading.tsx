@@ -14,16 +14,17 @@ export default function SectionHeading({ title, subtitle }: SectionHeadingProps)
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
-      className="mb-10 text-center sm:mb-16"
+      className="mb-6 text-center sm:mb-8"
     >
-      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
+      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
         {title}
-        <span className="gradient-text">.</span>
+        <span className="text-[var(--accent)]">.</span>
       </h2>
       {subtitle && (
-        <p className="mt-3 text-[var(--muted-foreground)]">{subtitle}</p>
+        <p className="mt-1.5 text-sm text-[var(--muted-foreground)] sm:text-base">
+          {subtitle}
+        </p>
       )}
-      <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-[var(--accent)]" />
     </motion.div>
   );
 }

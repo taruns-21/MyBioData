@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -7,6 +7,13 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#F7F3EE",
+};
 
 export const metadata: Metadata = {
   title: "Tarun S | Full Stack Developer — Modern Web Solutions",
@@ -23,7 +30,7 @@ export const metadata: Metadata = {
     "Python",
     "C#",
     "Freelance Developer",
-    "Bengaluru",
+    "Mumbai",
     "Web Developer India",
     "Business Website Developer",
   ],
@@ -62,12 +69,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
+      <html lang="en" suppressHydrationWarning>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <meta name="theme-color" content="#050505" />
-      </head>
-      <body className={`${inter.variable} noise font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]`}>
         {children}
       </body>
     </html>

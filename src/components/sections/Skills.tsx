@@ -2,60 +2,67 @@
 
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { skills, skillCategoryMeta } from "@/lib/data";
+import { skills } from "@/lib/data";
+import { Icons } from "@/components/ui/Icons";
+
+// Helper to map skill string to the corresponding Icon component
+const getIconForSkill = (skillName: string) => {
+  const norm = skillName.toLowerCase().replace(/[\s.]/g, "");
+  if (norm.includes("next")) return Icons.Nextjs;
+  if (norm.includes("react")) return Icons.React;
+  if (norm.includes("vue")) return Icons.Vuejs;
+  if (norm.includes("javascript")) return Icons.JavaScript;
+  if (norm.includes("typescript")) return Icons.TypeScript;
+  if (norm.includes("python")) return Icons.Python;
+  if (norm.includes("c#")) return Icons.CSharp;
+  if (norm.includes("net")) return Icons.DotNet;
+  if (norm.includes("postgres")) return Icons.PostgreSQL;
+  if (norm.includes("mysql")) return Icons.MySQL;
+  if (norm.includes("firebase")) return Icons.Firebase;
+  if (norm.includes("supabase")) return Icons.Supabase;
+  if (norm.includes("solr")) return Icons.Solr;
+  if (norm.includes("rabbit")) return Icons.RabbitMQ;
+  if (norm.includes("docker")) return Icons.Docker;
+  if (norm.includes("kubernetes")) return Icons.Kubernetes;
+  if (norm.includes("git")) return Icons.Git;
+  return null;
+};
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-1/2 h-72 w-72 rounded-full bg-purple-500/5 blur-[100px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-6xl px-6">
+    <section id="skills" className="py-8 sm:py-12 bg-[var(--card)] border-y border-[var(--border)]">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <SectionHeading
-          title="Skills & Tools"
-          subtitle="Technologies I work with daily"
+          title="Engineering Stack"
+          subtitle="The core technologies and infrastructure I work with."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Object.entries(skills).map(([category, items], catIdx) => {
-            const meta = skillCategoryMeta[category];
-            return (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: catIdx * 0.08, duration: 0.5 }}
-                className="group rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 transition-all hover:border-[var(--accent)]/20 hover:shadow-lg hover:shadow-[var(--accent)]/5 sm:p-6"
-              >
-                <div
-                  className={`mb-5 inline-flex rounded-lg bg-gradient-to-br ${meta.gradient} px-3 py-1.5`}
-                >
-                  <span className={`text-sm font-semibold ${meta.accent}`}>
-                    {category}
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill, i) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: catIdx * 0.08 + i * 0.04 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="inline-flex items-center gap-2 rounded-xl bg-[var(--muted)] px-3 py-2 text-xs font-medium transition-colors hover:bg-[var(--accent)]/10 hover:text-[var(--accent)] sm:px-3.5 sm:py-2.5 sm:text-sm"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]/60" />
+        <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {Object.entries(skills).map(([category, items], idx) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.4 }}
+              className="flex flex-col"
+            >
+              <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--foreground)] mb-2.5 border-b border-[var(--border)] pb-1.5">{category}</h3>
+              <ul className="space-y-1">
+                {items.map((skill) => {
+                  const IconComponent = getIconForSkill(skill);
+                  return (
+                    <li key={skill} className="flex items-center gap-2.5 text-sm font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors py-1">
+                      <span className="flex items-center justify-center h-6 w-6 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--accent)]">
+                        {IconComponent ? <IconComponent size={14} /> : <span className="text-[10px]">&lt;/&gt;</span>}
+                      </span>
                       {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

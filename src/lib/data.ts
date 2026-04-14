@@ -5,13 +5,13 @@ export const siteConfig = {
   phone: "+91-7019448032",
   email: "tarun21799@gmail.com",
   linkedin: "https://linkedin.com/in/tarun21",
-  github: "https://github.com/TarunTechHub",
+  github: "https://github.com/taruns-21",
   whatsapp:
-    "https://wa.me/917019448032?text=Hi%20Tarun%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project%2Fopportunity.",
-  resumeUrl: "/MyBioData/assets/resume/Tarun_Resume.pdf",
-  tagline: "I engineer systems that scale and ship products that convert.",
+    "https://wa.me/917019448032?text=Hi%20Tarun%2C%20I%20came%20across%20your%20portfolio...",
+  resumeUrl: "https://drive.google.com/file/d/1tqCZnDqDGUf6MJ9Cu4dbQB8JcBf-BWsS/view?usp=sharing",
+  tagline: "I build well-engineered backend systems and web applications.",
   summary:
-    "Full Stack Developer with 3+ years of experience building production systems and modern web applications. I work across backend architecture, APIs, frontend applications, dashboards, search systems, async processing, and AI-powered features — focused on building reliable, scalable solutions that create real business impact.",
+    "I'm a Full Stack Developer with 3+ years of experience. I currently work at WebMD building backend services, and I also develop custom web applications for businesses.",
 };
 
 export const navLinks = [
@@ -24,79 +24,39 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const services = [
+export const workExperience = [
   {
-    title: "Business Websites",
-    description:
-      "High-converting, mobile-first websites built for real businesses — salons, e-commerce, agencies, and more.",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
-    title: "Admin Dashboards",
-    description:
-      "Data-rich dashboards with real-time metrics, filters, and reporting — built for teams that need visibility.",
-    gradient: "from-violet-500 to-purple-500",
-  },
-  {
-    title: "Full-Stack Applications",
-    description:
-      "End-to-end web applications with authentication, APIs, databases, and polished frontends — production-ready.",
-    gradient: "from-emerald-500 to-teal-500",
-  },
-  {
-    title: "API & Backend Systems",
-    description:
-      "Scalable REST APIs, microservices, async processing pipelines, and search systems — engineered for performance.",
-    gradient: "from-orange-500 to-amber-500",
-  },
-];
-
-export const stats = [
-  { value: 3, suffix: "+", label: "Years Experience" },
-  { value: 2, suffix: "+", label: "Featured Projects" },
-  { value: 10, suffix: "+", label: "Production Systems Built" },
-  { value: 99.9, suffix: "%", label: "System Uptime Delivered" },
-];
-
-export const experience = [
-  {
-    role: "Software Engineer",
-    period: "Jul 2025 — Present",
-    description:
-      "Leading development of backend services and AI-powered features across healthcare provider platforms serving millions of users.",
-    highlights: [
-      "Architecting scalable backend services with .NET and Solr handling millions of provider records",
-      "Built AI-powered review summary features using LLM APIs, reducing manual content processing",
-      "Optimized Solr and database queries achieving major latency improvements across critical paths",
-      "Improved deployment pipelines using Docker, Kubernetes, and CI/CD for faster releases",
+    company: "WebMD",
+    location: "Mumbai, India",
+    roles: [
+      {
+        title: "Software Engineer",
+        period: "Jul 2025 — Present",
+        summary: "Working on backend architecture and API development.",
+        points: [
+          "Building backend services with .NET and Solr for large data logic.",
+          "Integrated LLM APIs for automated content tools.",
+        ],
+      },
+      {
+        title: "Associate Software Engineer",
+        period: "Oct 2023 — Jun 2025",
+        summary: "Developed backend services and frontend dashboards for internal workflows.",
+        points: [
+          "Built validation APIs for content moderation and filtering.",
+          "Automated provider workflow tasks to remove manual bottlenecks.",
+        ],
+      },
+      {
+        title: "Trainee Software Engineer",
+        period: "Mar 2023 — Sep 2023",
+        summary: "Supported core engineering teams on data pipelines and search features.",
+        points: [
+          "Contributed to reporting tools and call tracking systems.",
+          "Maintained Solr configurations for directory search.",
+        ],
+      },
     ],
-    technologies: [".NET", "C#", "Solr", "Kubernetes", "Docker", "LLM APIs"],
-  },
-  {
-    role: "Associate Software Engineer",
-    period: "Oct 2023 — Jun 2025",
-    description:
-      "Built core backend systems, APIs, and Vue.js dashboards powering provider leads, reviews, and reporting workflows.",
-    highlights: [
-      "Built review validation APIs for spam detection, PII filtering, and content quality scoring",
-      "Automated provider award distribution workflows, eliminating manual processing bottlenecks",
-      "Created Vue.js dashboards for leads tracking and performance metrics visualization",
-      "Worked with RabbitMQ for asynchronous task processing across distributed services",
-    ],
-    technologies: ["Vue.js", "RabbitMQ", ".NET", "REST APIs", "Solr", "CI/CD"],
-  },
-  {
-    role: "Trainee Software Engineer",
-    period: "Mar 2023 — Sep 2023",
-    description:
-      "Onboarded into production systems and contributed to backend services, call tracking systems, and reporting flows.",
-    highlights: [
-      "Built call tracking systems and reporting flows for provider engagement metrics",
-      "Contributed to backend services using .NET and SQL for healthcare data pipelines",
-      "Deployed systems on Kubernetes and learned production deployment practices",
-      "Collaborated on search optimization using Apache Solr for provider directory search",
-    ],
-    technologies: [".NET", "SQL", "Kubernetes", "Solr", "Git"],
   },
 ];
 
@@ -114,27 +74,20 @@ export const skills = {
     ".NET",
     "ASP.NET Core",
     "REST APIs",
-    "Microservices",
   ],
   "Database / Search": [
-    "Firebase Firestore",
-    "Supabase PostgreSQL",
+    "Firebase",
+    "Supabase",
     "MySQL",
     "Vertica",
     "Apache Solr",
   ],
-  "Messaging / Queue": ["RabbitMQ"],
-  "DevOps / Cloud": [
+  "Infrastructure": [
     "Docker",
     "Kubernetes",
+    "RabbitMQ",
     "Git",
     "CI/CD",
-  ],
-  "AI / Monitoring": [
-    "LLM API Integration",
-    "Grafana",
-    "Kibana",
-    "Sentry",
   ],
 };
 
@@ -143,28 +96,20 @@ export const skillCategoryMeta: Record<
   { gradient: string; accent: string }
 > = {
   Frontend: {
-    gradient: "from-blue-500/20 to-cyan-500/20",
-    accent: "text-blue-400",
+    gradient: "from-zinc-500/10 to-zinc-500/10",
+    accent: "text-zinc-600 dark:text-zinc-400",
   },
   Backend: {
-    gradient: "from-green-500/20 to-emerald-500/20",
-    accent: "text-green-400",
+    gradient: "from-zinc-500/10 to-zinc-500/10",
+    accent: "text-zinc-600 dark:text-zinc-400",
   },
   "Database / Search": {
-    gradient: "from-purple-500/20 to-violet-500/20",
-    accent: "text-purple-400",
+    gradient: "from-zinc-500/10 to-zinc-500/10",
+    accent: "text-zinc-600 dark:text-zinc-400",
   },
-  "Messaging / Queue": {
-    gradient: "from-amber-500/20 to-yellow-500/20",
-    accent: "text-amber-400",
-  },
-  "DevOps / Cloud": {
-    gradient: "from-orange-500/20 to-red-500/20",
-    accent: "text-orange-400",
-  },
-  "AI / Monitoring": {
-    gradient: "from-pink-500/20 to-rose-500/20",
-    accent: "text-pink-400",
+  "Infrastructure": {
+    gradient: "from-zinc-500/10 to-zinc-500/10",
+    accent: "text-zinc-600 dark:text-zinc-400",
   },
 };
 
@@ -172,41 +117,40 @@ export const projects = [
   {
     title: "HiFi Collection",
     description:
-      "A modern e-commerce platform built for selling products online with a premium shopping experience. Features product browsing, cart management, and secure checkout — designed to drive sales and reduce bounce rates.",
+      "An e-commerce storefront with cart management, live checkout, and an admin panel.",
     technologies: [
       "Next.js",
       "TypeScript",
-      "Firebase Firestore",
-      "Cloudinary",
+      "Firebase",
       "Razorpay",
     ],
     live: "https://hificollections.in/",
     github: null,
+    image: "/MyBioData/assets/projects/hifi.png",
     businessValue:
-      "Helped the business move from offline-only to a full online storefront, expanding customer reach and enabling 24/7 purchasing.",
-    gradient: "from-violet-600 via-purple-500 to-indigo-600",
+      "Allowed the local business to bypass manual WhatsApp ordering entirely.",
+    gradient: "from-zinc-600 via-zinc-500 to-zinc-600",
   },
   {
     title: "Velvet Family Salon",
     description:
-      "A salon booking platform with online appointment scheduling, service catalog, and a polished customer experience. Built with a focus on mobile-first design and conversion optimization.",
-    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+      "A booking application allowing users to schedule salon appointments directly.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
     live: "https://velvet-family-salon.vercel.app/",
     github: null,
+    image: "/MyBioData/assets/projects/velvet.png",
     businessValue:
-      "Replaced phone-only bookings with an online scheduling system, reducing no-shows and giving the salon a professional digital presence.",
-    gradient: "from-rose-600 via-pink-500 to-fuchsia-600",
+      "Reduced phone calls and manual scheduling errors for the salon staff.",
+    gradient: "from-zinc-600 via-zinc-500 to-zinc-600",
   },
 ];
 
 export const resumeHighlights = [
-  "3+ years of full-stack development experience at WebMD",
-  "Built backend services handling millions of healthcare provider records",
-  "Experience with .NET, C#, Python, JavaScript, TypeScript, React, Vue.js",
-  "Deployed and managed systems on Kubernetes with 99.9% uptime",
-  "Built AI-powered features using LLM API integrations",
-  "Created e-commerce and salon booking platforms as side projects",
-  "B.E. in Computer Science & Engineering — PESITM, Shivamogga (2018–2022)",
+  "3+ years of engineering experience across the stack",
+  "Working at WebMD on high-traffic healthcare infrastructure",
+  "Experience with .NET, C#, Python, TypeScript, and React",
+  "Proven record of deploying side projects for real businesses",
+  "B.E. in Computer Science & Engineering (2018–2022)",
 ];
 
 export const education = {

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function ThemeToggle() {
   const [dark, setDark] = useState(true);
@@ -23,20 +22,12 @@ export default function ThemeToggle() {
   };
 
   return (
-    <motion.button
+    <button
       onClick={toggle}
-      className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--muted)] transition-colors hover:border-[var(--accent)]"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted-foreground)] transition-colors hover:border-[var(--muted-foreground)] hover:text-[var(--foreground)]"
       aria-label="Toggle theme"
     >
-      <motion.div
-        initial={false}
-        animate={{ rotate: dark ? 0 : 180, opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        {dark ? <Moon size={16} /> : <Sun size={16} />}
-      </motion.div>
-    </motion.button>
+      {dark ? <Moon size={15} /> : <Sun size={15} />}
+    </button>
   );
 }

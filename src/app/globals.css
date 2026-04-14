@@ -3,36 +3,46 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fafafa;
-  --foreground: #0a0a0a;
+  /* Premium Warm/Consulting Palette */
+  --background: #F7F3EE;
+  --foreground: #1F2937;
   --card: #ffffff;
-  --card-foreground: #0a0a0a;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --accent-dark: #4f46e5;
-  --border: #e5e5e5;
-  --ring: #6366f1;
+  --muted: #EAE5DE;
+  --muted-foreground: #6B7280;
+  --accent: #2F5D8A;
+  --accent-dark: #1E4061;
+  --border: #E5DDD3;
 }
 
+/* Fallback/System dark mode matches the warm palette to prevent jarring flashes, 
+   since this is a deliberate light-themed brand redesign. */
 .dark {
-  --background: #050505;
-  --foreground: #f5f5f5;
-  --card: #0c0c0c;
-  --card-foreground: #f5f5f5;
-  --muted: #111111;
-  --muted-foreground: #a3a3a3;
-  --accent: #818cf8;
-  --accent-light: #a5b4fc;
-  --accent-dark: #6366f1;
-  --border: #1a1a1a;
-  --ring: #818cf8;
+  --background: #F7F3EE;
+  --foreground: #1F2937;
+  --card: #ffffff;
+  --muted: #EAE5DE;
+  --muted-foreground: #6B7280;
+  --accent: #2F5D8A;
+  --accent-dark: #1E4061;
+  --border: #E5DDD3;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
+  scrollbar-color: var(--border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 10px;
 }
 
 html {
@@ -56,192 +66,9 @@ body {
   color: white;
 }
 
-/* ── Glassmorphism ── */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.dark .glass {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ── Gradient text ── */
-.gradient-text {
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Noise overlay ── */
-.noise::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.012;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* ── Glow effects ── */
-.glow {
-  box-shadow: 0 0 40px -10px var(--accent);
-}
-
-.glow-soft {
-  box-shadow: 0 0 60px -20px var(--accent);
-}
-
-/* ── Animated gradient border ── */
-@keyframes gradient-rotate {
-  0% {
-    --angle: 0deg;
-  }
-  100% {
-    --angle: 360deg;
-  }
-}
-
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.gradient-border {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent),
-    transparent 30%,
-    transparent 70%,
-    var(--accent)
-  );
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-  animation: gradient-rotate 4s linear infinite;
-}
-
-/* ── Grid background ── */
-.grid-bg {
-  background-image: linear-gradient(
-      rgba(99, 102, 241, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-@media (min-width: 640px) {
-  .grid-bg {
-    background-size: 60px 60px;
-  }
-}
-
-.dark .grid-bg {
-  background-image: linear-gradient(
-      rgba(99, 102, 241, 0.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-}
-
-/* ── Hero radial fade on grid ── */
-.grid-mask {
-  mask-image: radial-gradient(
-    ellipse 90% 50% at 50% 50%,
-    black 30%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 90% 50% at 50% 50%,
-    black 30%,
-    transparent 100%
-  );
-}
-
-@media (min-width: 640px) {
-  .grid-mask {
-    mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
-      black 30%,
-      transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 50%,
-      black 30%,
-      transparent 100%
-    );
-  }
-}
-
-/* ── Cursor spotlight ── */
-.spotlight {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(99, 102, 241, 0.06) 0%,
-    transparent 70%
-  );
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  transition: opacity 0.3s;
-}
-
-/* ── Pulse glow for hero orbs ── */
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow 6s ease-in-out infinite;
-}
-
-.pulse-glow-delayed {
-  animation: pulse-glow 6s ease-in-out 3s infinite;
-}
-
-/* ── Section divider ── */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--border) 20%,
-    var(--accent) 50%,
-    var(--border) 80%,
-    transparent
-  );
-  opacity: 0.5;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(247, 243, 238, 0.85);
+  border-bottom: 1px solid var(--border);
 }
